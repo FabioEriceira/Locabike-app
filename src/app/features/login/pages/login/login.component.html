@@ -1,0 +1,25 @@
+<app-header></app-header>
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <p></p>
+        <h4>Bem vindo!</h4>
+        <h6>Digite seu usuário/senha para acessar o sistema!</h6>
+
+        <!-- Login Form -->
+        <form>
+            <input type="email" [(ngModel)]="email" id="login" class="fadeIn second" name="email" placeholder="Digite o email">
+            <input type="password" [(ngModel)]="senha" id="password" class="fadeIn third" name="password" placeholder="Digite a senha">
+            <input type="submit" (click)="authenticate()" class="fadeIn fourth" value="Entrar">
+            <p class="error" *ngIf="error">Usuário/Senha inválidos, tente novamente</p>
+        </form>
+
+        <!-- Remind Passowrd 
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Esqueceu a Senha?</a>
+      </div> -->
+
+    </div>
+</div>
+
+<app-footer></app-footer>
