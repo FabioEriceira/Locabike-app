@@ -4,12 +4,16 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarmenuComponent } from './components/navbarmenu/navbarmenu.component';
 import { RouterModule } from '@angular/router';
+import { PhonePipe } from './pipes/phone.pipe';
+import { CpfPipe } from './pipes/cpf.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    NavbarmenuComponent
+    NavbarmenuComponent,
+    PhonePipe,
+    CpfPipe
   ],
   imports: [
     CommonModule,
@@ -18,7 +22,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     FooterComponent,
-    NavbarmenuComponent
+    NavbarmenuComponent,
+    PhonePipe,
+    CpfPipe
   ]
 })
 export class SharedModule { }

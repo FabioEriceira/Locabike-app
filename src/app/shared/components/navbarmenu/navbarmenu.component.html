@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <button class="navbar-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
@@ -14,36 +13,47 @@
 
 <div class="offcanvas offcanvas-start d-flex flex-column flex-shrink-0 p-3 bg-light" tabindex="-1" id="offcanvasExample"
     aria-labelledby="offcanvasExampleLabel" style="width: 280px;">
-    
+
     <a href="" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <img src="https://blog.bikeregistrada.com.br/wp-content/uploads/2017/05/5-principais-competicoes-de-mountain-bike-no-brasil-999x640.jpeg" alt="" width="50" height="50" class="rounded-circle me-4">
+        <img src="https://blog.bikeregistrada.com.br/wp-content/uploads/2017/05/5-principais-competicoes-de-mountain-bike-no-brasil-999x640.jpeg"
+            alt="" width="50" height="50" class="rounded-circle me-4">
         <span class="fs-4">LocaBike</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-            <a [routerLink]="['/home']" href="#" class="nav-link active" aria-current="page">
-                <i class="bi bi-house-fill me-2"></i>
-                Home
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-dark">
-                <i class="bi bi-people-fill me -2"></i>
-                Cliente
-            </a>
-        </li>
-        <li>
-            <a href="#" class="nav-link link-dark">
-                
+            <a [routerLink]="['/home']" href="#" class="nav-link link-dark" aria-current="page">
                 <i class="bi bi-bicycle me -2"></i>
-                Equipamento
+                HOME
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <button class="nav-link link-dark border-0 collapsed" data-bs-toggle="collapse"
+                data-bs-target="#home-collapse" aria-expanded="false">
+                CLIENTE >
+            </button>
+            <div class="collapse show" id="home-collapse">
+                <ul class="mb-2 me-md-auto btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a [routerLink]="['/clientes-new']" href="#"
+                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">Novo
+                            Cliente</a></li>
+                    <li><a [routerLink]="['/clientes-list']" href="#"
+                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">Lista
+                            Cliente</a></li>
+                </ul>
+            </div>
+        </li>
+        <li>
+            <a href="#" class="nav-link link-dark">
+                <i class="bi bi-bicycle me -2"></i>
+                EQUIPAMENTO
             </a>
         </li>
         <li>
             <a href="#" class="nav-link link-dark">
-                <i class="bi bi-pencil-square me -2"></i>
-                Locacao
+                <i class="bi bi-bicycle me -2"></i>
+                LOCACAO
             </a>
         </li>
     </ul>
@@ -53,8 +63,8 @@
     <div class="btn-group dropup">
         <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle"
             data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://blog.bikeregistrada.com.br/wp-content/uploads/2017/05/5-principais-competicoes-de-mountain-bike-no-brasil-999x640.jpeg" 
-                 alt="" width="32" height="32" class="rounded-circle me-2">
+            <img src="https://blog.bikeregistrada.com.br/wp-content/uploads/2017/05/5-principais-competicoes-de-mountain-bike-no-brasil-999x640.jpeg"
+                alt="" width="32" height="32" class="rounded-circle me-2">
             <strong>Ger</strong>
         </a>
         <ul class="dropdown-menu text-small shadow">
@@ -64,7 +74,7 @@
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li [routerLink]="['/login']"><a class="dropdown-item" *ngIf= "user" (click)="exit()">Logout</a></li>
+            <li [routerLink]="['/login']"><a class="dropdown-item" *ngIf="user" (click)="exit()">Logout</a></li>
         </ul>
     </div>
 </div>

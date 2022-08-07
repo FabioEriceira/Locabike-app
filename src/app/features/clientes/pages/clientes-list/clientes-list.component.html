@@ -1,0 +1,36 @@
+<app-header></app-header>
+<app-navbarmenu></app-navbarmenu>
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">ID</th>
+                <th scope="col">CPF</th>
+                <th scope="col">NOME</th>
+                <th scope="col">TELEFONE</th>
+                <th scope="col">ENDEREÇO</th>
+                <th scope="col">CIDADE</th>
+                <th scope="col">ESTADO</th>
+                <th scope="col">CEP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of clientes; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.id }}</td>
+                <td>{{ item.cpf | cpf }}</td>
+                <td>{{ item.nome }}</td>
+                <td>{{ item.telefone | phone }}</td>
+                <td>{{ item.endereco.logradouro }}</td>
+                <td>{{ item.endereco.cidade }}</td>
+                <td>{{ item.endereco.estado }}</td>
+                <td>{{ item.endereco.cep }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<app-footer></app-footer>

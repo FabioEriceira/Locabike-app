@@ -8,7 +8,14 @@ import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './features/home/home.module';
 import { LoginModule } from './features/login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClientesModule } from './features/clientes/clientes.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -20,10 +27,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     HomeModule,
     LoginModule,
+    ClientesModule,
     NgbModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID, 
+      useValue: 'pt-BR'
+    }
+  ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
