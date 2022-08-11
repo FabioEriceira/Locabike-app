@@ -1,1 +1,74 @@
-<p>clientes-new works!</p>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand mx-auto" href="">INCLUSAO DE CLIENTES</a>
+    </div>
+</nav>
+<app-navbarmenu></app-navbarmenu>
+
+
+<form class="container">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label for="iCpf" >CPF</mat-label>
+      <input matInput mask="000.000.000-99" id="iCpf" [(ngModel)]="cpf" name="cpf">
+    </mat-form-field>
+
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iNome">Nome</mat-label>
+          <input matInput placeholder="Nome do Cliente" id="iNome" [(ngModel)]="nome" name="nome">
+        </mat-form-field></td>
+
+        <td><mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iTelefone">Telefone</mat-label>
+          <input matInput mask="(00) 00000.0000" placeholder="(00) 00000.0000" id="iTelefone" [(ngModel)]="telefone" name="telefone">
+        </mat-form-field></td>
+      </tr></table>
+
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label for="iEndereco">Endereço</mat-label>
+            <textarea matInput id="iEndereco" [(ngModel)]="logradouro" name="logradouro"></textarea>
+        </mat-form-field>
+      </p>
+
+
+    <!-- tentativa 02 de rodar a cidade no aplicativo.
+        1. Nâo funcioun
+        2. Funcionou, agora falta interligar a cidade ao estado
+    <h4>Basic mat-select</h4>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite food</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let cid of cidades" [value]="cid.nome">
+          {{cid.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+-->
+
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="iCidade">Cidade</mat-label>
+        <input matInput id="iCidade" [(ngModel)]="cidade" name="cidade">
+      </mat-form-field></td>
+
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="iEstado">Estado</mat-label >
+        <input matInput id="iEstado" [(ngModel)]="estado" name="estado">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label for="iCep">CEP</mat-label>
+        <input matInput mask="00.000-000" placeholder="65.000-000" [(ngModel)]="cep" name="cep">
+
+      </mat-form-field></td>
+    </tr></table>
+
+    <div class="d-grid gap-2 d-md-flex ">
+        <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">Confirmar</button>
+        <a routerLink="/clientes" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+
+  </form>

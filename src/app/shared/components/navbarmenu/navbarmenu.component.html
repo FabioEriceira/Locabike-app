@@ -4,9 +4,6 @@
             aria-controls="offcanvasExample">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <a class="navbar-brand mx-auto" href="">LOCAÇÃO DE BIKES</a>
-
     </div>
 </nav>
 
@@ -36,14 +33,35 @@
             <div class="collapse show" id="home-collapse">
                 <ul class="mb-2 me-md-auto btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a [routerLink]="['/clientes-new']" href="#"
-                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">Novo
-                            Cliente</a></li>
+                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+                            Novo Cliente</a></li>
                     <li><a [routerLink]="['/clientes-list']" href="#"
-                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">Lista
-                            Cliente</a></li>
+                            class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+                            Lista Cliente</a></li>
                 </ul>
             </div>
         </li>
+
+        <li class="nav-item">
+          <button class="nav-link link-dark border-0 collapsed" data-bs-toggle="collapse"
+              data-bs-target="#home-collapse" aria-expanded="false">
+              CLIENTE >
+          </button>
+          <div class="collapse show" id="home-collapse">
+              <ul class="mb-2 me-md-auto btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                  <li><a [routerLink]="['/equipamento-new']" href="#"
+                          class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+                          Novo Equipamento</a></li>
+                  <li><a [routerLink]="['/equipamento-list']" href="#"
+                          class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+                          Lista Equipamento</a></li>
+              </ul>
+          </div>
+      </li>
+
+
+
+
         <li>
             <a href="#" class="nav-link link-dark">
                 <i class="bi bi-bicycle me -2"></i>

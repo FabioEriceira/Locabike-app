@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteListService } from '../../services/cliente-list.service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   templateUrl: './clientes-list.component.html',

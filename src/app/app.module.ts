@@ -1,3 +1,4 @@
+import { EquipamentosModule } from './features/equipamentos/equipamentos.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,13 +10,17 @@ import { HomeModule } from './features/home/home.module';
 import { LoginModule } from './features/login/login.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClientesModule } from './features/clientes/clientes.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
+
+import { NgxMaskModule } from 'ngx-mask';
+import { EstadosService } from './shared/services/estados.service';
+
 
 @NgModule({
   declarations: [
@@ -28,14 +33,17 @@ registerLocaleData(localePt);
     HomeModule,
     LoginModule,
     ClientesModule,
+    EquipamentosModule,
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot({ dropSpecialCharacters: true})
   ],
   providers: [
     {
-      provide: LOCALE_ID, 
+      provide: LOCALE_ID,
       useValue: 'pt-BR'
     }
   ],
