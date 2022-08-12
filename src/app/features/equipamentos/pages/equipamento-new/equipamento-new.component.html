@@ -1,1 +1,86 @@
-<p>equipamento-new works!</p>
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto" href="">INCLUSAO DE EQUIPAMENTO</a>
+  </div>
+</nav>
+<app-navbarmenu></app-navbarmenu>
+
+<form class="container">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo Equipamento</mat-label>
+        <mat-select [(ngModel)]="tipoEquipamento" name="tipo">
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.viewValue">{{ tipo.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iFabricacao">Ano Fabricacao</mat-label>
+          <input
+            matInput
+            placeholder="Ano Fabricacao"
+            id="iFabricacao"
+            [(ngModel)]="fabricacao"
+            name="fabricacao"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iMarca">Marca</mat-label>
+          <input matInput id="iMarca" [(ngModel)]="marca" (ngModelChange)="marca=$event.toUpperCase()" name="marca" />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iGrupo">Grupo</mat-label>
+          <input matInput id="iGrupo" [(ngModel)]="grupo" (ngModelChange)="grupo=$event.toUpperCase()" name="grupo" />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iQtdDisponivel">Quantidade</mat-label>
+          <input
+            matInput
+            mask="00"
+            placeholder="00"
+            [(ngModel)]="qtdDisponivel"
+            name="qtdDisponivel"
+          />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label for="iValorLocacao">Valor Locação</mat-label>
+          <input
+            matInput prefix="R$ " mask="990"
+            placeholder="000"
+            [(ngModel)]="valorLocacao"
+            name="valorLocacao"
+          />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <div class="d-grid gap-2 d-md-flex">
+    <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">
+      Confirmar
+    </button>
+    <a routerLink="/equipamentos" class="btn btn-outline-secondary">Cancelar</a>
+  </div>
+</form>

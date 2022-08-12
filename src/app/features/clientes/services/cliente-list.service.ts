@@ -16,7 +16,6 @@ export class ClienteListService {
   }
 
   create(clientes:any): Observable<any> {
-    console.log('recbendo o cliente')
     console.log(clientes);
     return this.http.post(`${baseUrl}/clientes`,clientes);
 
