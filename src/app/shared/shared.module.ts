@@ -6,7 +6,7 @@ import { NavbarmenuComponent } from './components/navbarmenu/navbarmenu.componen
 import { RouterModule } from '@angular/router';
 import { PhonePipe } from './pipes/phone.pipe';
 import { CpfPipe } from './pipes/cpf.pipe';
-import { CidadesService } from './services/cidades.service';
+
 
 @NgModule({
   declarations: [
