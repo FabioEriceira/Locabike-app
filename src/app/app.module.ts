@@ -1,3 +1,5 @@
+import { MatNativeDateModule } from '@angular/material/core';
+import { LocacaoModule } from './features/locacao/locacao.module';
 import { EquipamentosModule } from './features/equipamentos/equipamentos.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -12,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClientesModule } from './features/clientes/clientes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
@@ -34,11 +37,14 @@ import { EstadosService } from './shared/services/estados.service';
     LoginModule,
     ClientesModule,
     EquipamentosModule,
+    LocacaoModule,
     NgbModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     NgxMaskModule.forRoot({ dropSpecialCharacters: true})
   ],
   providers: [

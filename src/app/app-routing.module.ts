@@ -5,6 +5,8 @@ import { ClientesNewComponent } from './features/clientes/pages/clientes-new/cli
 import { EquipamentoListComponent } from './features/equipamentos/pages/equipamento-list/equipamento-list.component';
 import { EquipamentoNewComponent } from './features/equipamentos/pages/equipamento-new/equipamento-new.component';
 import { HomeComponent } from './features/home/pages/home/home.component';
+import { LocacaoListComponent } from './features/locacao/pages/locacao-list/locacao-list.component';
+import { LocacaoNewComponent } from './features/locacao/pages/locacao-new/locacao-new.component';
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'clientes-list', component: ClientesListComponent },
   { path: 'equipamento-list', component: EquipamentoListComponent },
   { path: 'equipamento-new', component: EquipamentoNewComponent },
+  { path: 'locacao-list', component: LocacaoListComponent },
+  { path: 'locacao-new', component: LocacaoNewComponent },
 
 ];
 

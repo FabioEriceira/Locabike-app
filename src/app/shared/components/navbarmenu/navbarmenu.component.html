@@ -70,12 +70,25 @@
         </ul>
       </div>
     </li>
-    <li>
-      <a href="#" class="nav-link link-dark">
-        <i class="bi bi-bicycle me -2"></i>
-        LOCACAO
-      </a>
+
+    <li class="nav-item">
+      <button class="nav-link link-dark border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+        LOCACAO >
+      </button>
+      <div class="collapse show" id="home-collapse"><ul class="mb-2 me-md-auto btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a [routerLink]="['/locacao-new']" href="#" class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+            Nova Locacao
+              </a>
+          </li>
+          <li>
+            <a [routerLink]="['/locacao-list']" href="#" class="d-flex justify-content-evenly mb-2 link-dark text-decoration-none rounded">
+              Listar Locacoes
+            </a>
+          </li>
+        </ul>
+      </div>
     </li>
+
   </ul>
   <hr />
   <div class="btn-group dropup">
@@ -86,11 +99,11 @@
       <strong>Ger</strong>
     </a>
     <ul class="dropdown-menu text-small shadow">
-      <li><a class="dropdown-item" href="#">New project...</a></li>
+      <!-- <li><a class="dropdown-item" href="#">New project...</a></li>
       <li><a class="dropdown-item" href="#">Settings</a></li>
-      <li><a class="dropdown-item" href="#">Profile</a></li>
+      <li><a class="dropdown-item" href="#">Profile</a></li> -->
       <li>
-        <hr class="dropdown-divider" />
+        <!-- <hr class="dropdown-divider" /> -->
       </li>
       <li [routerLink]="['/login']">
         <a class="dropdown-item" *ngIf="user" (click)="exit()">Logout</a>

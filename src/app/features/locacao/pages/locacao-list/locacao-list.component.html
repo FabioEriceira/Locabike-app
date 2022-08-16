@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+      <a class="navbar-brand mx-auto" href="">LISTA LOCACOES</a>
+  </div>
+</nav>
+<app-navbarmenu></app-navbarmenu>
+
+<div class="container">
+
+  <table class="table table-striped">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">RETIRADA</th>
+              <th scope="col">DEVOLUCAO</th>
+              <th scope="col">IDCLIENTE</th>
+              <th scope="col">VALOR</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of locacoes ; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ item.dataRetirada | date: 'dd-MM-yy'}}</td>
+              <td>{{ item.dataDevolucao | date: 'dd-MM-yy'}}</td>
+              <td>{{ item.clienteId }}</td>
+              <td>{{ item.valorFinal | currency: "BRL" }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<app-footer></app-footer>

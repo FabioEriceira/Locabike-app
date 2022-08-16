@@ -1,0 +1,52 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-auto" href="">LOCACAO</a>
+  </div>
+</nav>
+<app-navbarmenu></app-navbarmenu>
+
+
+<form class="container">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data Retirada</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="dataRetirada" name="dataRetirada">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data Devolução</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="dataDevolucao" name="dataDevolucao">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+  </table>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field appearance="fill">
+        <mat-label>Cliente</mat-label>
+        <mat-select [(ngModel)]="clienteId" name="clienteId">
+          <mat-option *ngFor="let cli of clientes" [value]="cli">{{ cli.cpf }} - {{ cli.nome }}</mat-option>
+        </mat-select>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  
+  <hr>
+
+  <div class="d-grid gap-2 d-md-flex">
+    <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">
+      Confirmar
+    </button>
+    <a routerLink="/equipamentos" class="btn btn-outline-secondary">Cancelar</a>
+  </div>
+</form>
