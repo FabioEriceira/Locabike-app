@@ -9,12 +9,14 @@ import { LocacaoNewComponent } from './pages/locacao-new/locacao-new.component';
 
 import { NgxMaskModule } from 'ngx-mask';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ItensComponent } from './component/itens/itens.component';
 
 
 @NgModule({
   declarations: [
     LocacaoListComponent,
-    LocacaoNewComponent
+    LocacaoNewComponent,
+    ItensComponent
   ],
   imports: [
     AppMaterialModule,

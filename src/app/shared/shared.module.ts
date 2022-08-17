@@ -6,6 +6,7 @@ import { NavbarmenuComponent } from './components/navbarmenu/navbarmenu.componen
 import { RouterModule } from '@angular/router';
 import { PhonePipe } from './pipes/phone.pipe';
 import { CpfPipe } from './pipes/cpf.pipe';
+import { CepPipe } from './pipes/cep.pipe';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CpfPipe } from './pipes/cpf.pipe';
     FooterComponent,
     NavbarmenuComponent,
     PhonePipe,
-    CpfPipe
+    CpfPipe,
+    CepPipe
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { CpfPipe } from './pipes/cpf.pipe';
     FooterComponent,
     NavbarmenuComponent,
     PhonePipe,
-    CpfPipe
+    CpfPipe,
+    CepPipe
   ]
 })
 export class SharedModule { }

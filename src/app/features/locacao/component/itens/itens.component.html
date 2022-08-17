@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Itens</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Id</mat-label>
+    <input matInput [(ngModel)]="data.id">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Bike</mat-label>
+    <input matInput [(ngModel)]="data.equipamentoId">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Qtd dias</mat-label>
+    <input matInput [(ngModel)]="data.qtdDiasLocacao">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>SubTotal</mat-label>
+    <input matInput [(ngModel)]="data.subtotal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button *ngIf="!isChange" [mat-dialog-close]="data" cdkFocusInitial>Inserir</button>
+  <button mat-button *ngIf="isChange" [mat-dialog-close]="data" cdkFocusInitial>Alterar</button>
+</div>
+
+

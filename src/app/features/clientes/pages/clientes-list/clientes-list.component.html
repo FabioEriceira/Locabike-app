@@ -30,7 +30,7 @@
                 <td>{{ item.endereco.logradouro }}</td>
                 <td>{{ item.endereco.cidade }}</td>
                 <td>{{ item.endereco.estado }}</td>
-                <td>{{ item.endereco.cep }}</td>
+                <td>{{ item.endereco.cep | cep }} </td>
             </tr>
         </tbody>
     </table>

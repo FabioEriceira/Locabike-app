@@ -16,13 +16,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt);
 
 import { NgxMaskModule } from 'ngx-mask';
-import { EstadosService } from './shared/services/estados.service';
+
 
 
 @NgModule({
