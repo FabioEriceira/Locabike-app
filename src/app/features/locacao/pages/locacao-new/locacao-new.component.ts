@@ -4,6 +4,11 @@ import { Component, OnInit, ViewChild, LOCALE_ID } from '@angular/core';
 import { ItensComponent } from '../../component/itens/itens.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
+import * as moment from 'moment';
+
+
+
 
 export interface PeriodicElement {
   id: number;
@@ -29,11 +34,17 @@ export class LocacaoNewComponent implements OnInit {
 
   /* Definindo as variáveis */
 
-  dataRetirada: any;
-  dataDevolucao: any;
+
+  dataRetirada: any = new Date();
+  dataDevolucao: any = new Date();
   clienteId: any;
   clientes: any;
-
+  itens: any = {};
+  id: any;
+  equipamentoId: any;
+  qtdDiasLocacao: any;
+  subtotal: any;
+  valorFinal: any = 0;
 
   constructor(private locacaoService: LocacaoService,
               private clienteListService: ClienteListService,
@@ -47,6 +58,7 @@ export class LocacaoNewComponent implements OnInit {
 
   editItem(element: PeriodicElement): void {
     this.openDialog(element);
+    console.log("element "+element)
   }
 
   deleteItem(id: number): void {
@@ -93,10 +105,22 @@ export class LocacaoNewComponent implements OnInit {
   }
 
   save(): void {
+    let newDateRetirada: moment.Moment = moment.utc(this.dataRetirada).local();
+    this.dataRetirada = newDateRetirada.format("YYYY-MM-DD")+"T"+"00:00:00";
+
+    let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
+    this.dataDevolucao = newDataDevolucao.format("YYYY-MM-DD")+"T"+"00:00:00";
+
     const locacaoNew = {
       dataRetirada: this.dataRetirada,
-
+      dataDevolucao: this.dataDevolucao,
+      clienteId: this.clienteId,
+      valorFinal: this.valorFinal,
+      itens: this.dataSource
     };
+    console.log("dataRetirada");
+    console.log(this.dataRetirada);
+
     console.log(locacaoNew);
     this.locacaoService.create(locacaoNew)
       .subscribe(
@@ -106,6 +130,7 @@ export class LocacaoNewComponent implements OnInit {
         error => {
           console.log(error);
         });
+
   }
 }
 
