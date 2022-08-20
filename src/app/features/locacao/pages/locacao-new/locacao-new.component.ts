@@ -1,21 +1,21 @@
+import { ItensComponent } from './../../component/itens/itens.component';
 import { ClienteListService } from './../../../clientes/services/cliente-list.service';
 import { LocacaoService } from './../../services/locacao.service';
 import { Component, OnInit, ViewChild, LOCALE_ID } from '@angular/core';
-import { ItensComponent } from '../../component/itens/itens.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import * as moment from 'moment';
+import { DataSource } from '@angular/cdk/collections';
 
 
 
 
 export interface PeriodicElement {
-  id: number;
+  itemId: number;
   equipamentoId: number;
   qtdDiasLocacao: number;
   subtotal: number;
-
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [];
@@ -29,7 +29,7 @@ export class LocacaoNewComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
 
-  displayedColumns: string[] = ['id', 'equipamentoId', 'qtdDiasLocacao', 'subtotal', 'actions'];
+  displayedColumns: string[] = ['itemId', 'equipamentoId', 'qtdDiasLocacao', 'subtotal', 'actions'];
   dataSource = ELEMENT_DATA;
 
   /* Definindo as variáveis */
@@ -37,14 +37,14 @@ export class LocacaoNewComponent implements OnInit {
 
   dataRetirada: any = new Date();
   dataDevolucao: any = new Date();
-  clienteId: any;
+  clienteId = 0;
+  equipamentoId = 0;
+  qtdDiasLocacao = 0;
+  subtotal = 0;
+  valorFinal = 0;
   clientes: any;
-  itens: any = {};
-  id: any;
-  equipamentoId: any;
-  qtdDiasLocacao: any;
-  subtotal: any;
-  valorFinal: any = 0;
+  locacaoId: any = 0;
+  itemId: any;
 
   constructor(private locacaoService: LocacaoService,
               private clienteListService: ClienteListService,
@@ -61,8 +61,8 @@ export class LocacaoNewComponent implements OnInit {
     console.log("element "+element)
   }
 
-  deleteItem(id: number): void {
-    this.dataSource = this.dataSource.filter(p => p.id !== id);
+  deleteItem(itemId: number): void {
+    this.dataSource = this.dataSource.filter(p => p.itemId !== itemId);
   }
 
   openDialog(element: PeriodicElement | null): void{
@@ -74,7 +74,7 @@ export class LocacaoNewComponent implements OnInit {
         qtdDiasLocacao: null,
         subtotal: null
     } : {
-        id: element.id,
+        id: element.itemId,
         equipamentoId: element.equipamentoId,
         qtdDiasLocacao: element.qtdDiasLocacao,
         subtotal: element.subtotal
@@ -83,8 +83,8 @@ export class LocacaoNewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
-        if (this.dataSource.map(p => p.id).includes(result.id)){
-          this.dataSource[ result.id -1 ] = result;
+        if (this.dataSource.map(p => p.itemId).includes(result.itemId)){
+          this.dataSource[ result.itemId -1 ] = result;
         } else {
           this.dataSource.push(result);
         }
@@ -104,24 +104,53 @@ export class LocacaoNewComponent implements OnInit {
         });
   }
 
-  save(): void {
-    let newDateRetirada: moment.Moment = moment.utc(this.dataRetirada).local();
-    this.dataRetirada = newDateRetirada.format("YYYY-MM-DD")+"T"+"00:00:00";
 
-    let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
-    this.dataDevolucao = newDataDevolucao.format("YYYY-MM-DD")+"T"+"00:00:00";
 
-    const locacaoNew = {
-      dataRetirada: this.dataRetirada,
+ /*
+    this.dataRetirada = newDateRetirada.format("YYYY-MM-DD")+"T"+"09:00:00.374Z";
+
+    var dados = this.dataSource.map(function(e) { return "equipamentoID"+e.equipamentoId; } );
+    var itens = JSON.stringify(this.DataSource);
+    var re = /(\[)|(\])|(\")/g
+*/
+
+save(): void {
+
+  let newDateRetirada: moment.Moment = moment.utc(this.dataRetirada).local();
+  this.dataRetirada = newDateRetirada.format("DD-MM-YYYY");
+
+  let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
+  this.dataDevolucao = newDataDevolucao.format("DD-MM-YYYY");
+/*
+  var itens = JSON.stringify(this.dataSource);
+  console.log(itens)
+  var re = /(\[)|(\])|(\")/g
+  itens = itens.replace(re,"")
+
+  console.log(itens)
+
+  this.itemId = 0;
+  this.equipamentoId = 1;
+  this.qtdDiasLocacao = 0;
+  this.subtotal = 50;
+*/
+  const locacaoNew = {
+    locacaoId: this.locacaoId,
+    dataRetirada: this.dataRetirada,
+    dataDevolucao: this.dataDevolucao,
+    clienteId: this.clienteId,
+    valorFinal: this.valorFinal,
+    itens:this.dataSource
+
+      /*dataRetirada: this.dataRetirada,
       dataDevolucao: this.dataDevolucao,
       clienteId: this.clienteId,
       valorFinal: this.valorFinal,
-      itens: this.dataSource
+      itens: this.dataSource*/
     };
-    console.log("dataRetirada");
-    console.log(this.dataRetirada);
 
-    console.log(locacaoNew);
+    console.log(locacaoNew)
+
     this.locacaoService.create(locacaoNew)
       .subscribe(
         response => {

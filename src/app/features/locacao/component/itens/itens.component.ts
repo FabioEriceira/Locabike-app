@@ -21,7 +21,7 @@ export class ItensComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    if (this.data.id != null) {
+    if (this.data.itemId != null) {
       this.isChange = true;
     } else {
       this.isChange = false;

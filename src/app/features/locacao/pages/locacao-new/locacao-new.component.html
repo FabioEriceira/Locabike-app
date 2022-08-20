@@ -28,14 +28,11 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Cliente</mat-label>
-        <mat-select [(ngModel)]="clienteId" name="clienteId">
-          <mat-option *ngFor="let cli of clientes" [value]="cli">{{ cli.id}} - {{ cli.cpf }} - {{ cli.nome }}</mat-option>
-
-        </mat-select>
+        <select matNativeControl [(ngModel)]="clienteId" name="clienteId">
+          <option value="" selected></option>
+          <option *ngFor="let cli of clientes" [value]="cli.id">{{ cli.cpf }} - {{ cli.nome }}</option>
+      </select>
       </mat-form-field>
-      <p> {{ clienteId.id }} </p>
-
-
     </tr>
   </table>
 
@@ -47,10 +44,10 @@
 
   <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="id">
+    <ng-container matColumnDef="itemId">
       <th mat-header-cell *matHeaderCellDef> Id </th>
-      <mat-select [(ngModel)]="id" name="id"></mat-select>
-      <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+      <mat-select [(ngModel)]="itemId" name="itemId"></mat-select>
+      <td mat-cell *matCellDef="let element"> {{ element.itemId }} </td>
     </ng-container>
 
     <ng-container matColumnDef="equipamentoId">
