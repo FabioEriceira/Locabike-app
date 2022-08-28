@@ -13,21 +13,21 @@
               <th scope="col">#</th>
               <th scope="col">RETIRADA</th>
               <th scope="col">DEVOLUCAO</th>
-              <th scope="col">IDCLIENTE</th>
+              <th scope="col">CLIENTE</th>
               <th scope="col">VALOR</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let item of locacoes ; index as i">
               <th scope="row">{{ i + 1 }}</th>
-              <td>{{ item.dataRetirada }}</td>
-              <td>{{ item.dataDevolucao }}</td>
+              <td>{{ item.retirada | date: 'dd-MM-yyyy' }}</td>
+              <td>{{ item.devolucao | date: 'dd-MM-yyyy' }}</td>
 
               <!-- <td>{{ item.dataRetirada | date: 'dd-MM-yy'}}</td>
               <td>{{ item.dataDevolucao | date: 'dd-MM-yy'}}</td> -->
 
-              <td>{{ item.clienteId }}</td>
-              <td>{{ item.valorFinal | currency: "BRL" }}</td>
+              <td>{{ item.cliente }}</td>
+              <td>{{ item.valor | currency: "BRL" }}</td>
           </tr>
       </tbody>
   </table>

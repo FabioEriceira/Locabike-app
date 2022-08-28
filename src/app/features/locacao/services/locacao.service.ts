@@ -15,6 +15,10 @@ export class LocacaoService {
     return this.http.get(`${baseUrl}/locacoes`)
   }
 
+  listLocacaoComCliente(): Observable<any>{
+    return this.http.get(`${baseUrl}/locacoes/locacaoComCliente`)
+  }
+
   create(locacoes:any): Observable<any> {
     console.log(locacoes);
 

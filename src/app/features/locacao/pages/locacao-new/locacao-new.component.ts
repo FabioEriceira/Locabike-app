@@ -8,10 +8,8 @@ import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import * as moment from 'moment';
 import { DataSource } from '@angular/cdk/collections';
 
-
-
-
 export interface PeriodicElement {
+  id: number;
   itemId: number;
   equipamentoId: number;
   qtdDiasLocacao: number;
@@ -19,7 +17,6 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [];
-
 
 @Component({
   templateUrl: './locacao-new.component.html',
@@ -29,11 +26,10 @@ export class LocacaoNewComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
 
-  displayedColumns: string[] = ['itemId', 'equipamentoId', 'qtdDiasLocacao', 'subtotal', 'actions'];
+  displayedColumns: string[] = ['id', 'equipamentoId', 'qtdDiasLocacao', 'subtotal', 'actions'];
   dataSource = ELEMENT_DATA;
 
   /* Definindo as variáveis */
-
 
   dataRetirada: any = new Date();
   dataDevolucao: any = new Date();
@@ -45,12 +41,11 @@ export class LocacaoNewComponent implements OnInit {
   clientes: any;
   locacaoId: any = 0;
   itemId: any;
+  id: any;
 
   constructor(private locacaoService: LocacaoService,
               private clienteListService: ClienteListService,
               public dialog: MatDialog) { }
-
-
 
   ngOnInit(): void {
     this.exibirCliente()
@@ -61,8 +56,8 @@ export class LocacaoNewComponent implements OnInit {
     console.log("element "+element)
   }
 
-  deleteItem(itemId: number): void {
-    this.dataSource = this.dataSource.filter(p => p.itemId !== itemId);
+  deleteItem(id: number): void {
+    this.dataSource = this.dataSource.filter(p => p.id !== id);
   }
 
   openDialog(element: PeriodicElement | null): void{
@@ -74,17 +69,17 @@ export class LocacaoNewComponent implements OnInit {
         qtdDiasLocacao: null,
         subtotal: null
     } : {
-        id: element.itemId,
+        id: element.id,
         equipamentoId: element.equipamentoId,
         qtdDiasLocacao: element.qtdDiasLocacao,
         subtotal: element.subtotal
     }
-  });
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
-        if (this.dataSource.map(p => p.itemId).includes(result.itemId)){
-          this.dataSource[ result.itemId -1 ] = result;
+        if (this.dataSource.map(p => p.id).includes(result.id)){
+          this.dataSource[ result.id -1 ] = result;
         } else {
           this.dataSource.push(result);
         }
@@ -104,8 +99,6 @@ export class LocacaoNewComponent implements OnInit {
         });
   }
 
-
-
  /*
     this.dataRetirada = newDateRetirada.format("YYYY-MM-DD")+"T"+"09:00:00.374Z";
 
@@ -114,39 +107,39 @@ export class LocacaoNewComponent implements OnInit {
     var re = /(\[)|(\])|(\")/g
 */
 
-save(): void {
+  save(): void {
 
-  let newDateRetirada: moment.Moment = moment.utc(this.dataRetirada).local();
-  this.dataRetirada = newDateRetirada.format("DD-MM-YYYY");
+    let newDateRetirada: moment.Moment = moment.utc(this.dataRetirada).local();
+    this.dataRetirada = newDateRetirada.format("YYYY-MM-DD");
 
-  let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
-  this.dataDevolucao = newDataDevolucao.format("DD-MM-YYYY");
-/*
-  var itens = JSON.stringify(this.dataSource);
-  console.log(itens)
-  var re = /(\[)|(\])|(\")/g
-  itens = itens.replace(re,"")
+    let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
+    this.dataDevolucao = newDataDevolucao.format("YYYY-MM-DD");
+  /*
+    var itens = JSON.stringify(this.dataSource);
+    console.log(itens)
+    var re = /(\[)|(\])|(\")/g
+    itens = itens.replace(re,"")
 
-  console.log(itens)
+    console.log(itens)
 
-  this.itemId = 0;
-  this.equipamentoId = 1;
-  this.qtdDiasLocacao = 0;
-  this.subtotal = 50;
-*/
-  const locacaoNew = {
-    locacaoId: this.locacaoId,
-    dataRetirada: this.dataRetirada,
-    dataDevolucao: this.dataDevolucao,
-    clienteId: this.clienteId,
-    valorFinal: this.valorFinal,
-    itens:this.dataSource
-
-      /*dataRetirada: this.dataRetirada,
+    this.itemId = 0;
+    this.equipamentoId = 1;
+    this.qtdDiasLocacao = 0;
+    this.subtotal = 50;
+  */
+    const locacaoNew = {
+      locacaoId: this.locacaoId,
+      dataRetirada: this.dataRetirada,
       dataDevolucao: this.dataDevolucao,
       clienteId: this.clienteId,
       valorFinal: this.valorFinal,
-      itens: this.dataSource*/
+      itens:this.dataSource
+
+        /*dataRetirada: this.dataRetirada,
+        dataDevolucao: this.dataDevolucao,
+        clienteId: this.clienteId,
+        valorFinal: this.valorFinal,
+        itens: this.dataSource*/
     };
 
     console.log(locacaoNew)
@@ -159,8 +152,7 @@ save(): void {
         error => {
           console.log(error);
         });
-
-  }
+    }
 }
 
 

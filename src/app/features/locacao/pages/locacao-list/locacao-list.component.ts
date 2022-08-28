@@ -16,7 +16,7 @@ export class LocacaoListComponent implements OnInit {
   }
 
   listLocacoes(): void {
-    this.locacaoService.list()
+    this.locacaoService.listLocacaoComCliente()
     .subscribe(
       data => {
         this.locacoes = data;
