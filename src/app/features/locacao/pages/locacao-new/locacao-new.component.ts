@@ -22,6 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [];
   templateUrl: './locacao-new.component.html',
   styleUrls: ['./locacao-new.component.scss']
 })
+
 export class LocacaoNewComponent implements OnInit {
   @ViewChild(MatTable)
   table!: MatTable<any>;
@@ -31,6 +32,7 @@ export class LocacaoNewComponent implements OnInit {
 
   /* Definindo as variáveis */
 
+  submitted = false;
   dataRetirada: any = new Date();
   dataDevolucao: any = new Date();
   clienteId = 0;
@@ -47,6 +49,7 @@ export class LocacaoNewComponent implements OnInit {
               private clienteListService: ClienteListService,
               public dialog: MatDialog) { }
 
+              
   ngOnInit(): void {
     this.exibirCliente()
   }
@@ -93,19 +96,12 @@ export class LocacaoNewComponent implements OnInit {
         data => {
           this.clientes = data;
           console.log(data);
+          
         },
         error => {
           console.log(error);
         });
   }
-
- /*
-    this.dataRetirada = newDateRetirada.format("YYYY-MM-DD")+"T"+"09:00:00.374Z";
-
-    var dados = this.dataSource.map(function(e) { return "equipamentoID"+e.equipamentoId; } );
-    var itens = JSON.stringify(this.DataSource);
-    var re = /(\[)|(\])|(\")/g
-*/
 
   save(): void {
 
@@ -114,19 +110,7 @@ export class LocacaoNewComponent implements OnInit {
 
     let newDataDevolucao: moment.Moment = moment.utc(this.dataDevolucao).local();
     this.dataDevolucao = newDataDevolucao.format("YYYY-MM-DD");
-  /*
-    var itens = JSON.stringify(this.dataSource);
-    console.log(itens)
-    var re = /(\[)|(\])|(\")/g
-    itens = itens.replace(re,"")
-
-    console.log(itens)
-
-    this.itemId = 0;
-    this.equipamentoId = 1;
-    this.qtdDiasLocacao = 0;
-    this.subtotal = 50;
-  */
+    
     const locacaoNew = {
       locacaoId: this.locacaoId,
       dataRetirada: this.dataRetirada,
@@ -135,11 +119,6 @@ export class LocacaoNewComponent implements OnInit {
       valorFinal: this.valorFinal,
       itens:this.dataSource
 
-        /*dataRetirada: this.dataRetirada,
-        dataDevolucao: this.dataDevolucao,
-        clienteId: this.clienteId,
-        valorFinal: this.valorFinal,
-        itens: this.dataSource*/
     };
 
     console.log(locacaoNew)
@@ -148,10 +127,16 @@ export class LocacaoNewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.dataSource = [];
+          alert("Bike Locada");
         },
         error => {
           console.log(error);
         });
+    }
+    
+    onSubmit() { 
+      this.submitted = true; 
     }
 }
 

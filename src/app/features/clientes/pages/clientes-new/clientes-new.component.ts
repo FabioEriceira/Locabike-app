@@ -62,6 +62,7 @@ export class ClientesNewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          alert("Cliente Cadastrado");
         },
         error => {
           console.log(error);

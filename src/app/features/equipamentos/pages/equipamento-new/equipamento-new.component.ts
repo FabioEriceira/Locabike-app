@@ -47,6 +47,7 @@ export class EquipamentoNewComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          alert("Bike Cadastrada");
         },
         error => {
           console.log(error);
