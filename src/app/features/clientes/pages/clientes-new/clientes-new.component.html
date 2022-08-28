@@ -5,8 +5,7 @@
 </nav>
 <app-navbarmenu></app-navbarmenu>
 
-
-<form class="container">
+<form class="container" (ngSubmit)="onSubmit()" #f="ngForm">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label for="iCpf" >CPF</mat-label>
       <input matInput mask="000.000.000-99" id="iCpf" [(ngModel)]="cpf" name="cpf">
@@ -67,8 +66,7 @@
     </tr></table>
 
     <div class="d-grid gap-2 d-md-flex ">
-        <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">Confirmar</button>
-        <a routerLink="/clientes" class="btn btn-outline-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-outline-primary me-md-2" [disabled]="!f.form.valid" (click)="save() ; f.reset()">Confirmar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="f.reset()">Cancelar</button>
     </div>
-
   </form>

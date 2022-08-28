@@ -17,10 +17,12 @@ export class EquipamentoNewComponent implements OnInit {
     {value: 'SPEED-1', viewValue: 'SPEED'},
   ];
 
+  
+  submitted = false;
   tipoEquipamento: any;
   fabricacao: any;
-  marca: any;
-  grupo: any;
+  marca?: string = "";
+  grupo?: string = "";
   qtdDisponivel: any;
   valorLocacao: any;
 
@@ -50,4 +52,6 @@ export class EquipamentoNewComponent implements OnInit {
           console.log(error);
         });
   }
+
+  onSubmit() { this.submitted = true; }
 }

@@ -3,6 +3,7 @@ import { ClientesListComponent } from './../clientes-list/clientes-list.componen
 import { Component, OnInit, enableProdMode, LOCALE_ID, Input, TemplateRef } from '@angular/core';
 import { CidadesService } from 'src/app/shared/services/cidades.service';
 import { EstadosService } from 'src/app/shared/services/estados.service';
+import { FormGroup } from '@angular/forms';
 
 // import { ManyToOne, JoinColumn } from 'typeorm'
 
@@ -15,6 +16,7 @@ import { EstadosService } from 'src/app/shared/services/estados.service';
 })
 export class ClientesNewComponent implements OnInit {
 
+  submitted = false;
   cidades: any;
   clientes: any;
   cpf: any;
@@ -65,4 +67,6 @@ export class ClientesNewComponent implements OnInit {
           console.log(error);
         });
   }
+
+  onSubmit() { this.submitted = true; }
 }

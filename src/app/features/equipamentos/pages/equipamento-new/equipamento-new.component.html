@@ -5,7 +5,7 @@
 </nav>
 <app-navbarmenu></app-navbarmenu>
 
-<form class="container">
+<form class="container" (ngSubmit)="onSubmit()" #f="ngForm">
   <table class="example-full-width" cellspacing="0">
     <tr>
       <td>
@@ -21,13 +21,7 @@
       <td>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label for="iFabricacao">Ano Fabricacao</mat-label>
-          <input
-            matInput
-            placeholder="Ano Fabricacao"
-            id="iFabricacao"
-            [(ngModel)]="fabricacao"
-            name="fabricacao"
-          />
+          <input matInput placeholder="Ano Fabricacao" id="iFabricacao" [(ngModel)]="fabricacao" name="fabricacao"/>
         </mat-form-field>
       </td>
     </tr>
@@ -38,7 +32,7 @@
       <td>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label for="iMarca">Marca</mat-label>
-          <input matInput id="iMarca" [(ngModel)]="marca" (ngModelChange)="marca=$event.toUpperCase()" name="marca" />
+          <input matInput id="iMarca" [(ngModel)]="marca" (ngModelChange)="marca=$event.toUpperCase()" name="marca"/>
         </mat-form-field>
       </td>
 
@@ -77,9 +71,7 @@
   </table>
 
   <div class="d-grid gap-2 d-md-flex">
-    <button class="btn btn-outline-primary me-md-2" type="button" (click)="save()">
-      Confirmar
-    </button>
-    <a routerLink="/equipamentos" class="btn btn-outline-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-outline-primary me-md-2" [disabled]="!f.form.valid" (click)="save() ; f.reset()">Confirmar</button>
+    <button type="button" class="btn btn-outline-secondary" (click)="f.reset()">Cancelar</button>
   </div>
 </form>
